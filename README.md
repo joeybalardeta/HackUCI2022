@@ -5,5 +5,4 @@ This game was created for the Hack At UCI Hackathon of 2022.
 
 
 ## Created By
-Joseph Balardeta
-Paris Haraguchi
+Joseph Balardeta and Paris Haraguchi
