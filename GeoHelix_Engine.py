@@ -66,11 +66,11 @@ class Renderer:
             pygame.draw.line(self.GeoHelixGame.screen, (255 - i * 20, 255 - i * 20, 255 - i * 20), (10 - i, 0),(10 - i, self.GeoHelixGame.HEIGHT))
             pygame.draw.line(self.GeoHelixGame.screen, (255 - i * 20, 255 - i * 20, 255 - i * 20), (self.GeoHelixGame.WIDTH - 11 + i, 0),(self.GeoHelixGame.WIDTH - 11 + i, self.GeoHelixGame.HEIGHT))
 
-    def draw_rect():
+    def draw_rect(self):
         pass
 
 
-    def draw_player():
+    def draw_player(self):
         pass
 
 
