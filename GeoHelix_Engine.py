@@ -31,13 +31,13 @@ class GeoHelix:
         try:
             self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
             pygame.display.set_caption("GeoHelix - HackUCI 2022")
+            self.start_screen()
             self.game_loop()
         
         finally:
             pygame.quit()
     
     def game_loop(self):
-        self.start_screen()
         while self.running:
             self.handle_events()
             self.renderer.render()
@@ -70,16 +70,25 @@ class GeoHelix:
     def start_screen(self):
         self.screen.fill(BLACK)
         welcome = self.renderer.font.render("Welcome to GeoHelix!", False, BLUE)
-        welcome2 = self.renderer.font.render("Don't touch the boxes!", False, RED)
-        welcome3 = self.renderer.font.render("Press SPACE to switch sides!", False, WHITE)
+        welcome2 = self.renderer.font.render("How to Play: press SPACE to switch sides!", False, WHITE)
+        welcome3 = self.renderer.font.render("Don't touch the boxes!", False, RED)
+        welcome4 = self.renderer.font.render("(Press any key to begin)", False, WHITE)
         welcome_rect = welcome.get_rect(center = (GeoHelixData.WIDTH / 2, (GeoHelixData.HEIGHT / 2) - 25))
         welcome2_rect = welcome2.get_rect(center = (GeoHelixData.WIDTH / 2, GeoHelixData.HEIGHT / 2))
         welcome3_rect = welcome3.get_rect(center = (GeoHelixData.WIDTH / 2, (GeoHelixData.HEIGHT / 2) + 25))
+        welcome4_rect = welcome4.get_rect(center = (GeoHelixData.WIDTH / 2, (GeoHelixData.HEIGHT / 2) + 75))
         self.screen.blit(welcome, welcome_rect)
         self.screen.blit(welcome2, welcome2_rect)
         self.screen.blit(welcome3, welcome3_rect)
+        self.screen.blit(welcome4, welcome4_rect)
         pygame.display.flip()
-        time.sleep(5)
+        not_clicked = True
+        while not_clicked:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.game_stop()
+                if event.type == pygame.KEYDOWN:
+                    not_clicked = False
 
     def game_stop(self):
         self.running = False
